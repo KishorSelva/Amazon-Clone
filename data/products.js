@@ -656,5 +656,25 @@ const products = [
       "apparel",
       "mens"
     ]
+  }, 
+  {
+    id: "id1",
+    image: "images/products/backpack.jpg",
+    name:"Gucci Louis Vuitton Supreme Backpack",
+    rating: {
+      stars: 4.5,
+      count: 69
+    },
+    priceCents: 70000
+  }, 
+  {
+    id: "id2",
+    image: "images/products/umbrella.jpg",
+    name:"Roddy Rich Rolls Royce Umbrella",
+    rating: {
+      stars: 5.0,
+      count: 992
+    },
+    priceCents: 89000
   }
 ];

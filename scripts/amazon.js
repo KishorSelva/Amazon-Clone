@@ -1,4 +1,4 @@
-import {cart} from '../data/cart.js';
+import {cart, addToCart} from '../data/cart.js';
 import {products} from '../data/products.js'
 
 
@@ -63,47 +63,39 @@ productsDisplay.innerHTML = innerContent;
 
 let timeoutIdObject = {};
 
+
+
+function updateCartQuantity(productId) {
+  let cartQuantity = 0;
+  cart.forEach((cartItem) => {
+    cartQuantity += cartItem.quantity;
+  })
+
+  document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+
+  let addedMessage = document.querySelector(`.js-added-message-${productId}`);
+
+  addedMessage.classList.add('clicked');
+  
+  const prevoiusTimeoutId = timeoutIdObject[productId]
+
+  if(prevoiusTimeoutId) {
+    clearTimeout(prevoiusTimeoutId)
+  } 
+
+  let timeoutId = setTimeout(() => {
+    addedMessage.classList.remove('clicked')
+  }, 2000);
+
+  timeoutIdObject[productId] = timeoutId
+}
+
 document.querySelectorAll('.js-add-to-cart-button').forEach((button) => {
   button.addEventListener('click', () => {
     const productId = button.dataset.productId;
-    let valueToBeAdded = Number(document.querySelector(`.js-quantity-selector-${productId}`).value);
-    let inCart = false
-    cart.forEach((item) => {
-      if(item.productId === productId) {
-        item.quantity += valueToBeAdded;
-        inCart = true;
-      }
-    })
-    if(!inCart) {
-      cart.push({
-        productId: productId,
-        quantity: 1
-      });
-    }
+
+    addToCart(productId);
     
-    let cartQuantity = 0;
-    cart.forEach((item) => {
-      cartQuantity += item.quantity;
-    })
-
-    document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
-
-    let addedMessage = document.querySelector(`.js-added-message-${productId}`);
-
-    addedMessage.classList.add('clicked');
-    
-    const prevoiusTimeoutId = timeoutIdObject[productId]
-
-    if(prevoiusTimeoutId) {
-      clearTimeout(prevoiusTimeoutId)
-    } 
-
-    let timeoutId = setTimeout(() => {
-      addedMessage.classList.remove('clicked')
-    }, 2000);
-
-    timeoutIdObject[productId] = timeoutId
-
-    
+    updateCartQuantity(productId);
   })
 })

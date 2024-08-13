@@ -12,7 +12,7 @@ export function addToCart(productId) {
     if(!inCart) {
       cart.push({
         productId: productId,
-        quantity: 1
+        quantity: valueToBeAdded
       });
     }
   }

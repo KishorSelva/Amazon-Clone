@@ -66,7 +66,7 @@ let timeoutIdObject = {};
 
 
 
-function updateCartQuantity(productId) {
+function updateCartQuantity() {
   let cartQuantity = 0;
   cart.forEach((cartItem) => {
     cartQuantity += cartItem.quantity;
@@ -74,6 +74,10 @@ function updateCartQuantity(productId) {
 
   document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
 
+
+}
+
+function displayAddedMessage(productId) {
   let addedMessage = document.querySelector(`.js-added-message-${productId}`);
 
   addedMessage.classList.add('clicked');
@@ -91,12 +95,16 @@ function updateCartQuantity(productId) {
   timeoutIdObject[productId] = timeoutId
 }
 
+updateCartQuantity()
+
 document.querySelectorAll('.js-add-to-cart-button').forEach((button) => {
   button.addEventListener('click', () => {
     const productId = button.dataset.productId;
 
     addToCart(productId);
     
-    updateCartQuantity(productId);
+    updateCartQuantity();
+
+    displayAddedMessage(productId);
   })
 })

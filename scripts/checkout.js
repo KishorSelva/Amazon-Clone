@@ -113,5 +113,18 @@ deleteLinkElement.forEach((element) => {
     let container = document.querySelector(`.js-cart-item-container-${productRemovedId}`)
 
     container.remove()
+    updateTotalAmount()
   })
 })
+
+
+function updateTotalAmount() {
+  let totalQuantity = 0;
+  cart.forEach((element) => {
+  totalQuantity += element.quantity
+  })
+
+  document.querySelector('.js-return-to-home-link').innerHTML = `${totalQuantity} items`
+}
+
+updateTotalAmount()

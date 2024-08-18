@@ -1,6 +1,7 @@
-import {cart, addToCart} from '../data/cart.js';
+import {cart, addToCart, calculateCartQunatity} from '../data/cart.js';
 import {products} from '../data/products.js'
 import { formatCurrency } from './utils/money.js';
+
 
 
 
@@ -67,10 +68,8 @@ let timeoutIdObject = {};
 
 
 function updateCartQuantity() {
-  let cartQuantity = 0;
-  cart.forEach((cartItem) => {
-    cartQuantity += cartItem.quantity;
-  })
+  let cartQuantity = calculateCartQunatity()
+  console.log(cartQuantity)
 
   document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
 

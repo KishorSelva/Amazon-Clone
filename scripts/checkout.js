@@ -1,10 +1,6 @@
-import { cart, removeFromCart, calculateCartQunatity } from '../data/cart.js'
+import { cart, removeFromCart, calculateCartQunatity, updateQuantity } from '../data/cart.js'
 import { products } from '../data/products.js'
 import { formatCurrency } from './utils/money.js';
-
-
-
-
 
 
 
@@ -36,10 +32,14 @@ cart.forEach((element) => {
                 </div>
                 <div class="product-quantity">
                   <span>
-                    Quantity: <span class="quantity-label">${element.quantity}</span>
+                    Quantity: <span class="js-quantity-label-${element.productId} quantity-label">${element.quantity}</span>
                   </span>
-                  <span class="update-quantity-link link-primary">
+                  <span class="update-quantity-link-primary js-update-quantity-link-primary" data-product-id="${element.productId}">
                     Update
+                  </span>
+                  <input class="quantity-input js-quantity-input-${element.productId}"></input>
+                  <span class="save-quantity-link link-primary" data-product-id="${matchingObject.id}">
+                  Save
                   </span>
                   <span class="delete-quantity-link link-primary js-delete-quantity-link" data-product-id="${element.productId}">
                     Delete
@@ -126,3 +126,33 @@ function updateTotalAmount() {
 }
 
 updateTotalAmount()
+
+document.querySelectorAll('.js-update-quantity-link-primary').forEach((element) => {
+  element.addEventListener('click', () => {
+    let productId = element.dataset.productId
+    let containerObject = document.querySelector(`.js-cart-item-container-${productId}`)
+    containerObject.classList.add('is-editing-quantity')
+  })
+})
+
+document.querySelectorAll('.save-quantity-link').forEach((link) => {
+
+  let productId = link.dataset.productId
+  link.addEventListener('click', () => {
+    changeQuantityBox(productId)
+  })
+  document.querySelector(`.js-quantity-input-${productId}`).addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      changeQuantityBox(productId)
+    }
+  })
+})
+
+function changeQuantityBox(productId) {
+  document.querySelector(`.js-cart-item-container-${productId}`).classList.remove('is-editing-quantity');
+    let newQuantity = Number(document.querySelector(`.js-quantity-input-${productId}`).value)
+    console.log(newQuantity)
+    updateQuantity(productId, newQuantity);
+    document.querySelector(`.js-quantity-label-${productId}`).innerHTML = newQuantity
+    updateTotalAmount()
+}

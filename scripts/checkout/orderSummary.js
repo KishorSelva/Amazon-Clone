@@ -4,6 +4,7 @@ import { formatCurrency } from '../utils/money.js';
 import {hello} from 'https://unpkg.com/supersimpledev@1.0.1/hello.esm.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js'
 import {deliveryOptions, getDeliveryOption} from '../../data/deliveryOptions.js'
+import { renderPaymentSummary } from './paymentSummary.js';
 
 const today = dayjs()
 const deliveryDate = today.add(7, 'days');
@@ -139,6 +140,7 @@ export function renderOrderSummary() {
 
       container.remove()
       updateTotalAmount()
+      renderPaymentSummary()
     })
   })
 
@@ -164,10 +166,12 @@ export function renderOrderSummary() {
     let productId = link.dataset.productId
     link.addEventListener('click', () => {
       changeQuantityBox(productId)
+      renderPaymentSummary()
     })
     document.querySelector(`.js-quantity-input-${productId}`).addEventListener('keydown', (event) => {
       if (event.key === 'Enter') {
         changeQuantityBox(productId)
+        renderPaymentSummary()
       }
     })
   })
@@ -191,6 +195,7 @@ export function renderOrderSummary() {
       const productId = element.dataset.productId
       const deliveryOptionId = element.dataset.deliveryOptionId
       updateDeliveryOption(productId, deliveryOptionId)
+      renderPaymentSummary()
       renderOrderSummary();
     })
   })

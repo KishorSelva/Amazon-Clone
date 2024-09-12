@@ -28,10 +28,21 @@ export function getDeliveryOption(deliveryOptionId) {
 
 export function calculateDeliveryDate(deliveryOption) {
   const today = dayjs();
-  const deliveryDate = today.add(
-    deliveryOption.deliveryDays,
-    'days'
-  )
+  let numberOfDaysToBeAdded = deliveryOption.deliveryDays
+  let deliveryDate = today
+
+ 
+  while (numberOfDaysToBeAdded > 0) {
+    if (deliveryDate.add(1, 'days').format('ddd') === 'Sat' || deliveryDate.add(1, 'days').format('ddd') === 'Sun') {
+      deliveryDate = deliveryDate.add(1, 'days')
+      continue;
+    } else {
+      deliveryDate = deliveryDate.add(1, 'days')
+      numberOfDaysToBeAdded -= 1;
+    }
+  }
+
+
   const dateString = deliveryDate.format(
   'dddd, MMMM D')
   return dateString

@@ -164,9 +164,8 @@ export function renderOrderSummary() {
     document.querySelector(`.js-cart-item-container-${productId}`).classList.remove('is-editing-quantity');
       let newQuantity = Number(document.querySelector(`.js-quantity-input-${productId}`).value)
       if(newQuantity >= 0 & newQuantity < 1000) {
-        console.log(newQuantity)
         updateQuantity(productId, newQuantity);
-        document.querySelector(`.js-quantity-label-${productId}`).innerHTML = newQuantity
+        renderOrderSummary()
         updateTotalAmount()
       } else {
         console.log("Too much Brah")

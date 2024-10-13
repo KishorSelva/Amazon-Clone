@@ -24,7 +24,7 @@ export function renderOrderSummary() {
       const dateString = calculateDeliveryDate(deliveryOption)
 
       productsText += `
-          <div class="cart-item-container js-cart-item-container-${matchingObject.id}">
+          <div class="cart-item-container js-cart-item-container js-cart-item-container-${matchingObject.id}">
               <div class="delivery-date">
                 Delivery date: ${dateString}
               </div>
@@ -40,7 +40,8 @@ export function renderOrderSummary() {
                   <div class="product-price">
                     $${formatCurrency(matchingObject.priceCents)}
                   </div>
-                  <div class="product-quantity">
+                  <div class="product-quantity
+                    js-product-quantity-${element.productId}">
                     <span>
                       Quantity: <span class="js-quantity-label-${element.productId} quantity-label">${element.quantity}</span>
                     </span>
@@ -51,7 +52,7 @@ export function renderOrderSummary() {
                     <span class="save-quantity-link link-primary" data-product-id="${matchingObject.id}">
                     Save
                     </span>
-                    <span class="delete-quantity-link link-primary js-delete-quantity-link" data-product-id="${element.productId}">
+                    <span class="delete-quantity-link link-primary js-delete-quantity-link js-delete-link-${element.productId}" data-product-id="${element.productId}">
                       Delete
                     </span>
                   </div>
@@ -135,7 +136,7 @@ export function renderOrderSummary() {
     renderCheckoutHeader(totalQuantity)
   }
 
-  updateTotalAmount()
+  updateTotalAmount();
 
   document.querySelectorAll('.js-update-quantity-link-primary').forEach((element) => {
     element.addEventListener('click', () => {

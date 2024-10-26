@@ -95,7 +95,7 @@ class Cart {
   }
   
   export function updateQuantity(productId, newQuantity) {
-    cart.forEach((object) => {
+    cart.cartItems.forEach((object) => {
       if (object.productId === productId) {
         object.quantity = newQuantity
       }

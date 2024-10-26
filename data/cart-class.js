@@ -66,42 +66,42 @@ class Cart {
     matchingItem.deliveryOptionId = deliveryOptionId
     this.saveToCart()
   }
-}
 
-
-
-  
-  export const cart = new Cart('cart-oop');
-  const businessCart = new Cart('cart-business');
-
-
-
-  
-  console.log(cart)
-  console.log(businessCart)
-  console.log(businessCart instanceof Cart)
-  
-  
-  
-  
-  
-  export function calculateCartQuantity() {
+  calculateCartQuantity() {
     let quantity = 0
-    cart.cartItems.forEach((element) => {
+    this.cartItems.forEach((element) => {
         quantity += element.quantity;
         
     })
     return quantity
   }
-  
-  export function updateQuantity(productId, newQuantity) {
-    cart.cartItems.forEach((object) => {
+
+  updateQuantity(productId, newQuantity) {
+    this.cartItems.forEach((object) => {
       if (object.productId === productId) {
         object.quantity = newQuantity
       }
     })
-    cart.saveToCart()
+    this.saveToCart()
   }
   
-  //cart.addToCart('83d4ca15-0f35-48f5-b7a3-1ea210004f2e')
-  console.log(cart);
+}
+
+
+
+  
+export const cart = new Cart('cart-oop');
+const businessCart = new Cart('cart-business');
+
+
+
+console.log(cart)
+console.log(businessCart)
+console.log(businessCart instanceof Cart)
+  
+  
+  
+  
+
+
+console.log(cart);

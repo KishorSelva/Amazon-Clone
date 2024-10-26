@@ -1,4 +1,4 @@
-import { cart, calculateCartQuantity, updateQuantity } from '../../data/cart-class.js'
+import { cart } from '../../data/cart-class.js'
 import { products, getProduct } from '../../data/products.js'
 import { formatCurrency } from '../utils/money.js';
 
@@ -131,7 +131,7 @@ export function renderOrderSummary() {
 
 
   function updateTotalAmount() {
-    let totalQuantity = calculateCartQuantity()
+    let totalQuantity = cart.calculateCartQuantity()
 
     renderCheckoutHeader(totalQuantity)
   }
@@ -165,7 +165,7 @@ export function renderOrderSummary() {
     document.querySelector(`.js-cart-item-container-${productId}`).classList.remove('is-editing-quantity');
       let newQuantity = Number(document.querySelector(`.js-quantity-input-${productId}`).value)
       if(newQuantity >= 0 & newQuantity < 1000) {
-        updateQuantity(productId, newQuantity);
+        cart.updateQuantity(productId, newQuantity);
         renderOrderSummary()
         updateTotalAmount()
       } else {

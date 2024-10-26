@@ -71,7 +71,7 @@ class Cart {
 
 
   
-  const cart = new Cart('cart-oop');
+  export const cart = new Cart('cart-oop');
   const businessCart = new Cart('cart-business');
 
 
@@ -87,7 +87,7 @@ class Cart {
   
   export function calculateCartQuantity() {
     let quantity = 0
-    cart.forEach((element) => {
+    cart.cartItems.forEach((element) => {
         quantity += element.quantity;
         
     })

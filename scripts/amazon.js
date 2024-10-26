@@ -1,4 +1,4 @@
-import {cart, addToCart, calculateCartQuantity} from '../data/cart.js';
+import {cart, calculateCartQuantity} from '../data/cart-class.js';
 import {products} from '../data/products.js'
 import { formatCurrency } from './utils/money.js';
 
@@ -102,7 +102,7 @@ document.querySelectorAll('.js-add-to-cart-button').forEach((button) => {
   button.addEventListener('click', () => {
     const productId = button.dataset.productId;
 
-    addToCart(productId);
+    cart.addToCart(productId);
     
     updateCartQuantity();
 

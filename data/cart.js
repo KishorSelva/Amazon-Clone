@@ -1,10 +1,10 @@
-
+//this file is no longer used all the functionality has been moved to cart-class.js
 export let cart;
 
 loadFromStorage()
 
 export function loadFromStorage() {
-  cart = JSON.parse(localStorage.getItem('cart')) || [{
+  cart = JSON.parse(localStorage.getItem('cart-cart-oop')) || [{
     productId: "15b6fc6f-327a-4ec4-896f-486349e85a3d",
     quantity: 1,
     deliveryOptionId: '1'
@@ -16,7 +16,7 @@ export function loadFromStorage() {
 }
 
 function saveToCart() {
-  localStorage.setItem('cart', JSON.stringify(cart))
+  localStorage.setItem('cart-cart-oop', JSON.stringify(cart))
 }
 
 export function addToCart(productId) {

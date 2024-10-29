@@ -4,6 +4,7 @@ import { renderCheckoutHeader } from "./checkout/checkoutHeader.js";
 import { cart } from "../data/cart-class.js";
 //import '../data/cart-class.js';
 import '../data/car.js'
+import '../data/backend-practice.js';
 
 let quantity = cart.calculateCartQuantity()
 

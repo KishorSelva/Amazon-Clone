@@ -1,4 +1,6 @@
 //this file is no longer used all the functionality has been moved to cart-class.js
+
+/*
 export let cart;
 
 loadFromStorage()
@@ -79,3 +81,4 @@ export function updateDeliveryOption(productId, deliveryOptionId) {
   matchingItem.deliveryOptionId = deliveryOptionId
   saveToCart()
 }
+*/

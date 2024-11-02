@@ -5,7 +5,7 @@ import { loadProducts } from "../../data/products.js";
 describe('test suite: renderOrderSummary', () => {
     beforeAll((done) => {
         loadProducts(() => {
-            done()
+            done();
         });
     });
     beforeEach(() => {

@@ -92,12 +92,12 @@ export function loadProducts(fun) {
       if (productDetails.type === 'appliance') {
         return new Appliance(productDetails);
       }
-      return new Product(productDetails)
+      return new Product(productDetails);
     });
 
-    console.log('load products')
+    console.log('load products');
 
-    fun()
+    fun();
   });
   xhr.open('GET', 'https://supersimplebackend.dev/products');
   xhr.send();

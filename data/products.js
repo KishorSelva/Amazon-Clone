@@ -99,10 +99,13 @@ export function loadProductsFetch() {
 
     console.log('load products');
 
+  }).catch((error) => {
+    console.log('Unexpected error. Please try agian later');
   });
 
   return promise;
 }
+loadProductsFetch();
 
 /*
 loadProductsFetch().then(() => {
@@ -128,6 +131,11 @@ export function loadProducts(fun) {
 
     fun();
   });
+  
+  xhr.addEventListener('error', (error) => {
+    console.log('Unexpected error. Please try agian later')
+  })
+
   xhr.open('GET', 'https://supersimplebackend.dev/products');
   xhr.send();
 }

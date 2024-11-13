@@ -5,14 +5,17 @@ import { cart } from "../data/cart-class.js";
 import { loadProducts, loadProductsFetch } from "../data/products.js";
 //import { loadCart } from "../data/products.js";
 //import '../data/cart-class.js';
-//import '../data/car.js'
+//import '../data/car.js';
 //import '../data/backend-practice.js';
 
 async function loadPage() {
     try {
         // throw 'error 1';
 
-        await loadProductsFetch();
+        await Promise.all([cart.loadCartFetch(), loadProductsFetch()]);
+
+        //await cart.loadCartFetch();
+        //await loadProductsFetch();
 
         const value = await new Promise((resolve) => {
             // throw 'error2';
@@ -24,6 +27,8 @@ async function loadPage() {
     } catch (error) {
         console.log('Unexepected error. Please try again later.');
     }
+
+    
 
     //console.log(value);
     renderOrderSummary();

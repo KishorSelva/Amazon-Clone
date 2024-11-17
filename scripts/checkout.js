@@ -16,14 +16,19 @@ async function loadPage() {
 
         //await cart.loadCartFetch();
         //await loadProductsFetch();
-
+        /*
         const value = await new Promise((resolve) => {
             // throw 'error2';
+
+            
             cart.loadCart(() => {
                 //reject('error3');
                 resolve('value 1');
             });
+            
+
         });
+        */
     } catch (error) {
         console.log('Unexepected error. Please try again later.');
     }

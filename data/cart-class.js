@@ -87,9 +87,9 @@ class Cart {
   
   async loadCartFetch() {
     const response = await fetch('https://supersimplebackend.dev/cart');
-    console.log(response);
+    //console.log(response);
     const text = await response.text();
-    console.log(text + 'HIIII');
+    //console.log(text + 'HIIII');
    
   }
 

@@ -20,6 +20,12 @@ class Cart {
     }]
   }
 
+  clearCart() {
+    let newCart = [];
+    this.cartItems = newCart;
+    this.saveToCart()
+  }
+
   saveToCart() {
     localStorage.setItem(`cart-${this.#localStorageKey}`, JSON.stringify(this.cartItems))
   }

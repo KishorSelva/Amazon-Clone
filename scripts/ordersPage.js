@@ -139,6 +139,7 @@ buyAgainList.forEach((element) => {
     })
   })
 
+console.log(orders)
 
 /*
 console.log(orders)

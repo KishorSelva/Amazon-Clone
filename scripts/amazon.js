@@ -9,6 +9,7 @@ loadProducts(renderProductsGrid);
 export function renderProductsGrid() {
 
 
+  console.log(products);
 
   let productsDisplay = document.querySelector('.js-products-grid');
 
@@ -24,7 +25,9 @@ export function renderProductsGrid() {
 
   if(searchElement) {
       localProducts = products.filter((items) => {
-      return items.name.toLocaleLowerCase().includes(searchElement.toLowerCase());
+      return items.name.toLocaleLowerCase().includes(searchElement.toLowerCase()) || items.keywords.some((word) => {
+        return word.toLowerCase().includes(searchElement.toLowerCase())
+      });
     })
   }
 

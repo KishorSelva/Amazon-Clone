@@ -1,11 +1,12 @@
 import {cart} from '../data/cart-class.js';
 import {products, loadProducts} from '../data/products.js'
 import { formatCurrency } from './utils/money.js';
+const url = new URL(window.location.href);
 
 
 loadProducts(renderProductsGrid);
 
-function renderProductsGrid() {
+export function renderProductsGrid() {
 
 
 
@@ -13,7 +14,23 @@ function renderProductsGrid() {
 
   let innerContent = '';
 
-  products.forEach((object) => {
+  
+  const searchElement = url.searchParams.get('search');
+
+  let localProducts = products.slice();
+  
+
+  console.log(searchElement);
+
+  if(searchElement) {
+      localProducts = products.filter((items) => {
+      return items.name.toLocaleLowerCase().includes(searchElement.toLowerCase());
+    })
+  }
+
+  console.log(localProducts);
+
+  localProducts.forEach((object) => {
       innerContent  += `
           <div class="product-container">
             <div class="product-image-container">

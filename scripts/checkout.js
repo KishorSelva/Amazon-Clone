@@ -1,4 +1,4 @@
-import { renderOrderSummary } from "./checkout/orderSummary.js";
+import { renderOrderSummary, displayEmpty } from "./checkout/orderSummary.js";
 import { renderPaymentSummary } from "./checkout/paymentSummary.js";
 import { renderCheckoutHeader } from "./checkout/checkoutHeader.js";
 import { cart } from "../data/cart-class.js";
@@ -8,11 +8,13 @@ import { loadProducts, loadProductsFetch } from "../data/products.js";
 //import '../data/car.js';
 //import '../data/backend-practice.js';
 
-async function loadPage() {
+export async function loadPage() {
     try {
         // throw 'error 1';
 
         await Promise.all([cart.loadCartFetch(), loadProductsFetch()]);
+
+        console.log(cart.cartItems);
 
         //await cart.loadCartFetch();
         //await loadProductsFetch();
@@ -36,8 +38,14 @@ async function loadPage() {
     
 
     //console.log(value);
-    renderOrderSummary();
-    renderPaymentSummary();
+    if (cart.cartItems.length === 0) {
+        renderPaymentSummary();
+        displayEmpty();
+    } else {
+        renderOrderSummary();
+        renderPaymentSummary();
+    }
+    
 
 
 }

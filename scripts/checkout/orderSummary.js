@@ -6,6 +6,21 @@ import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js'
 import {deliveryOptions, getDeliveryOption, calculateDeliveryDate} from '../../data/deliveryOptions.js'
 import { renderPaymentSummary } from './paymentSummary.js';
 import { renderCheckoutHeader } from './checkoutHeader.js';
+import { loadPage } from '../checkout.js';
+
+
+export function displayEmpty() {
+  document.querySelector('.js-order-summary').innerHTML = `
+    <div data-testid="empty-cart-message">
+        Your cart is empty.
+    </div>
+    <button class="button-primary" style="margin: 10px 0px 0px; padding: 8px 15px;">
+      <a class="" href="amazon.html" style="font-size: 16px; text-decoration: none; color:black">
+          View products
+      </a>
+    </button>
+  `
+}
 
 export function renderOrderSummary() {
 
@@ -126,6 +141,7 @@ export function renderOrderSummary() {
       container.remove()
       updateTotalAmount()
       renderPaymentSummary()
+      loadPage()
     })
   })
 

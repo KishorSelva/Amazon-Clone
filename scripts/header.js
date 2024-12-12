@@ -7,7 +7,7 @@ const searchButton = document.querySelector('.js-search-button');
 
 
 searchButton.addEventListener('click', () => {
-  const search = searchBar.value;
+  const search = searchBar.value.trim();
   if (search) {
     window.location.href = `
     amazon.html?search=${search}
@@ -23,7 +23,7 @@ searchButton.addEventListener('click', () => {
 
 searchBar.addEventListener('keydown', (event) => {
   if (event.key == 'Enter') {
-    const search = searchBar.value;
+    const search = searchBar.value.trim();
     if (search) {
       window.location.href = `
       amazon.html?search=${search}

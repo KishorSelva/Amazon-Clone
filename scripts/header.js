@@ -35,7 +35,7 @@ searchBar.addEventListener('keydown', (event) => {
     }
   }
   
-  searchBar.setAttribute("value", search)
+  
 
 })
 

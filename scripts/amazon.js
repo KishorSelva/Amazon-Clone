@@ -9,7 +9,7 @@ loadProducts(renderProductsGrid);
 export function renderProductsGrid() {
 
 
-  console.log(products);
+  
 
   let productsDisplay = document.querySelector('.js-products-grid');
 
@@ -21,7 +21,7 @@ export function renderProductsGrid() {
   let localProducts = products.slice();
   
 
-  console.log(searchElement);
+
 
   if(searchElement) {
       localProducts = products.filter((items) => {
@@ -31,7 +31,7 @@ export function renderProductsGrid() {
     })
   }
 
-  console.log(localProducts);
+  
 
   if (localProducts.length == 0) {
     innerContent = `
@@ -105,7 +105,7 @@ export function renderProductsGrid() {
 
   function updateCartQuantity() {
     let cartQuantity = cart.calculateCartQuantity()
-    console.log(cartQuantity)
+    
 
     document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
 

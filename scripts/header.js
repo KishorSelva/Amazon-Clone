@@ -10,11 +10,11 @@ searchButton.addEventListener('click', () => {
   const search = searchBar.value.trim();
   if (search) {
     window.location.href = `
-    amazon.html?search=${search}
+    index.html?search=${search}
     `;
     renderProductsGrid();
   } else {
-    window.location.href = "amazon.html"
+    window.location.href = "index.html"
     renderProductsGrid();
   }
   
@@ -26,11 +26,11 @@ searchBar.addEventListener('keydown', (event) => {
     const search = searchBar.value.trim();
     if (search) {
       window.location.href = `
-      amazon.html?search=${search}
+      index.html?search=${search}
       `;
       renderProductsGrid();
     } else {
-      window.location.href = "amazon.html"
+      window.location.href = "index.html"
       renderProductsGrid();
     }
   }

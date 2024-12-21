@@ -15,7 +15,7 @@ export function displayEmpty() {
         Your cart is empty.
     </div>
     <button class="button-primary" style="margin: 10px 0px 0px; padding: 8px 15px;">
-      <a class="" href="amazon.html" style="font-size: 16px; text-decoration: none; color:black">
+      <a class="" href="index.html" style="font-size: 16px; text-decoration: none; color:black">
           View products
       </a>
     </button>
